@@ -10,8 +10,8 @@ void createNewAccount(){
     string firstName,lastName,birthDate;
 
     fstream record,infile;
-    record.open ("D:\\CS\\project\\bank\\datat.txt", ios::app );
-    infile.open("D:\\CS\\project\\bank\\numbeOfAccounts.txt",ios::in | ios::out);
+    record.open ("datat.txt", ios::app );
+    infile.open("numbeOfAccounts.txt",ios::in | ios::out);
     if(!record.is_open()&& !infile.is_open()){
         cout<<"Error opening file";
         exit(0);
@@ -47,7 +47,7 @@ void createNewAccount(){
 
 int accountExist(int i){
     ifstream  infile;
-    infile.open("D:\\CS\\project\\bank\\datat.txt");
+    infile.open("datat.txt");
     if(!infile.is_open()){
         cout<<"Error opening file";
         exit(1);
@@ -74,7 +74,7 @@ void showRecord() {
     cout << "Please enter the account number to show the record: ";
     cin >> accNum;
 
-    ifstream infile("D:\\CS\\project\\bank\\datat.txt");
+    ifstream infile("datat.txt");
     if (!infile.is_open()) {
         cout<< "Error opening file" << endl;
         exit(0);
@@ -109,8 +109,8 @@ void transact(){
     cout<<"Enter account number : ";
     cin>>accNumber;
     if (accountExist(accNumber)) {
-        input.open("D:\\CS\\project\\bank\\datat.txt");
-        output.open("D:\\CS\\project\\bank\\datat_temp.txt");
+        input.open("datat.txt");
+        output.open("datat_temp.txt");
         if (!output.is_open() || !input.is_open()) {
             cout << "Error opening file";
             exit(1);
@@ -151,7 +151,7 @@ void transact(){
                         cout << "Insufficient funds" << endl;
                         output.close();
                         input.close();
-                        remove("D:\\CS\\project\\bank\\datat_temp");
+                        remove("datat_temp");
 
                         exit(1);
                     }
@@ -169,8 +169,8 @@ void transact(){
         }
         input.close();
         output.close();
-        remove("D:\\CS\\project\\bank\\datat.txt");
-        rename("D:\\CS\\project\\bank\\datat_temp", "D:\\CS\\project\\bank\\datat.txt");
+        remove("datat.txt");
+        rename("datat_temp", "datat.txt");
     }
     else {
         cout << "Account does not exist";
@@ -188,8 +188,8 @@ void deposit() {
         cout << "Enter the account number that you want to deposit to: ";
         cin >> accNumDeposit;
         if (accountExist(accNumDeposit)) {
-            input.open("D:\\CS\\project\\bank\\datat.txt");
-            output.open("D:\\CS\\project\\bank\\datat_temp.txt");
+            input.open("datat.txt");
+            output.open("datat_temp.txt");
             if (!input.is_open() || !output.is_open()) {
                 cout << "Error opening the file" << endl;
                 exit(0);
@@ -213,7 +213,7 @@ void deposit() {
                         cout<<"The account currently has insufficient funds to complete the transaction."<<endl;
                         input.close();
                         output.close();
-                        remove("D:\\CS\\project\\bank\\datat_temp.txt");
+                        remove("datat_temp.txt");
                         ::exit(0);
                     }
 
@@ -228,11 +228,11 @@ void deposit() {
             }
             input.close();
             output.close();
-            remove("D:\\CS\\project\\bank\\datat.txt");
-            rename("D:\\CS\\project\\bank\\datat_temp.txt", "D:\\CS\\project\\bank\\datat.txt");
+            remove("datat.txt");
+            rename("datat_temp.txt", "datat.txt");
 
-            input.open("D:\\CS\\project\\bank\\datat.txt");
-            output.open("D:\\CS\\project\\bank\\datat_temp.txt");
+            input.open("datat.txt");
+            output.open("datat_temp.txt");
             if (!input.is_open() || !output.is_open()) {
                 cout << "Error opening the file" << endl;
                 exit(0);
@@ -258,8 +258,8 @@ void deposit() {
             }
             input.close();
             output.close();
-            remove("D:\\CS\\project\\bank\\datat.txt");
-            rename("D:\\CS\\project\\bank\\datat_temp.txt", "D:\\CS\\project\\bank\\datat.txt");
+            remove("datat.txt");
+            rename("datat_temp.txt", "datat.txt");
 
             cout << "Deposit successful" << endl;
         } else {
@@ -278,8 +278,8 @@ void removeAccount(){
     cout<<"Enter account number : ";
     cin>>accNumber;
     if (accountExist(accNumber)) {
-        input.open("D:\\CS\\project\\bank\\datat.txt");
-        output.open("D:\\CS\\project\\bank\\datat_temp.txt");
+        input.open("datat.txt");
+        output.open("datat_temp.txt");
         if (!output.is_open() || !input.is_open()) {
             cout << "Error opening file";
             exit(1);
@@ -300,8 +300,8 @@ void removeAccount(){
 
             input.close();
             output.close();
-            remove("D:\\CS\\project\\bank\\datat.txt");
-            rename("D:\\CS\\project\\bank\\datat_temp.txt", "D:\\CS\\project\\bank\\datat.txt");
+            remove("datat.txt");
+            rename(datat_temp.txt", "datat.txt");
             cout<<"Account removed successfully";
             ::exit(1);
         }
@@ -309,7 +309,7 @@ void removeAccount(){
             cout<<"Operation cancelled";
             input.close();
             output.close();
-            remove("D:\\CS\\project\\bank\\datat_temp.txt");
+            remove("datat_temp.txt");
 
 
 
@@ -320,7 +320,7 @@ void removeAccount(){
             cout << "Invalid choice";
             input.close();
             output.close();
-            remove("D:\\CS\\project\\bank\\datat_temp.txt");
+            remove("datat_temp.txt");
             ::exit(1);
             exit(1);
         }
@@ -330,7 +330,7 @@ void removeAccount(){
             cout << "Account not found";
             input.close();
             output.close();
-            remove("D:\\CS\\project\\bank\\datat_temp.txt");
+            remove("datat_temp.txt");
 
     }
 
